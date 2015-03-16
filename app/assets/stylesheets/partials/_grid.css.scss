@@ -1,0 +1,12 @@
+$susy: (
+	container: 64em,
+	columns: 6,
+	gutters: 1/4,
+	math: fluid,
+	output: float,
+);
+
+@include border-box-sizing;
+
+
+

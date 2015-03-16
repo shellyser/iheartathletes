@@ -1,0 +1,39 @@
+<div class="container">
+	<% @athletes.each do |athlete| %>
+		<section>
+			<div class="flipper">
+				<div class="content">
+					<div class="photo">
+						<img src="http://lorempixel.com/200/300/sports/">
+					</div>
+					<div class="info">
+						<h2><%= athlete.firstname %>
+								<%= athlete.lastname %></h2>
+					<!-- 	<h3><%= athlete.sport %></h3>
+						<p><%= athlete.league %></p>
+						<p><%= athlete.team %></p>
+					<%= link_to 'Show', athlete %>
+					<%= link_to 'Edit', edit_athlete_path(athlete) %>
+					<%= link_to 'Destroy', athlete, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+					</div>
+				</div>
+				<div class="content">
+					<div class="info">
+						<h2><%= athlete.firstname %>
+								<%= athlete.lastname %></h2>
+						<h3><%= athlete.sport %></h3>
+						<p><%= athlete.league %></p>
+						<p><%= athlete.team %></p>
+					</div>
+				</div>
+			</div>
+		</section>
+	<% end %>
+	<section>
+		<%= link_to new_athlete_path do %>
+			<i></i>
+		<% end %>
+	</section>
+</div>
+<br>
+

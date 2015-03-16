@@ -1,0 +1,29 @@
+.add {
+	background: #ececec;
+	border: 1px solid #cfcfcf;
+	border-radius: 50%;
+	bottom: 50%;
+	-webkit-box-shadow: 0 0 2px #fff inset;
+	box-shadow: 0 0 2px #fff inset;
+	height: 44px;
+	left: 50%;
+	margin-left: -22px;
+	position: absolute;
+	width: 44px;
+	&:after{
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		color: #b5b5b5;
+		content: '+';
+		display: block;
+		font-family: sans-serif;
+		font-size: 31px;
+		line-height: 31px;
+		font-style: normal;
+		position: absolute;
+		top: 6px;
+		text-align: center;
+	}
+}

@@ -1,0 +1,96 @@
+.container {
+    @include container;
+}
+
+section {
+    @include span(6 last);
+    margin-bottom: 1rem;
+    @include susy-breakpoint($bp-large, $susy) {
+        @include gallery(2 of 6);
+        @include border-radius(4px);
+        height: 26rem;
+        @include perspective(1000);
+        &:hover .flipper, &.hover .flipper {
+            @include transform(rotateY(180deg));
+        }
+    }
+
+    .flipper {
+        @include susy-breakpoint($bp-large, $susy) {
+            @include transition(0.6s);
+            @include transform-style(preserve-3d);
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+.content {
+    @include susy-breakpoint($bp-large, $susy) {
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    &:first-of-type {
+        @include susy-breakpoint($bp-large, $susy) {
+            z-index: 2;
+            @include transform(rotateY(0deg));
+        }
+
+        .info {
+            @include span(6 last);
+            @include susy-breakpoint($bp-large, $susy) {
+                width: 100%;
+                position: absolute;
+                bottom: 0px;
+                z-index: 9999;
+                h2 {
+                    font-family: $decor-font;
+                    text-align: center;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+    .photo {
+        @include span(3 first);
+        @include susy-breakpoint($bp-large, $susy) {
+            padding: 1rem;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+    &:last-of-type {
+        @include susy-breakpoint($bp-large, $susy) {
+            @include transform(rotateY(180deg));
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .info {
+            @include span(6 last);
+            @include susy-breakpoint($bp-large, $susy) {
+                width: 100%;
+                h2 {
+                    font-family: $decor-font;
+                    text-align: center;
+                    text-transform: capitalize;
+                }
+            }
+        }
+    }
+}
+section{
+	&:last-of-type{
+		background: rgba(0, 0, 0, 0.03);
+	}
+	 & i{
+		@extend .add;
+	}
+}
