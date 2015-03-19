@@ -1,0 +1,56 @@
+<div class="modal-dialog-edit">
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">Edit Athlete</h4>
+	</div>
+	<div class="modal-body">
+		<%= form_for(@athlete) do |f| %>
+			<% if @athlete.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@athlete.errors.count, "error") %> prohibited this athlete from being saved:</h2>
+				<ul>
+				<% @athlete.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+				</ul>
+			</div>
+			<% end %>
+			<div class="row">
+				<div class="	col-md-6">
+					<div class="form-group">
+						<%= f.label "first name", class:"control-label" %><br>
+						<%= f.text_field :firstname, class:"form-control" %>
+					</div>
+					<div class="form-group">
+						<%= f.label "last name", class:"control-label" %><br>
+						<%= f.text_field :lastname, class:"form-control" %>
+					</div>
+					<div class="form-group">
+						<%= f.label "sport", class:"control-label" %><br>
+						 <%= f.collection_select :sport_id, Sport.order(:name),:id,:name, include_blank: false, class:"form-control" %>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<%= f.label :league, class:"control-label" %><br>
+						<%= f.text_field :league, class:"form-control" %>
+					</div>
+					<div class="form-group">
+						<%= f.label :team, class:"control-label" %><br>
+						<%= f.text_field :team, class:"form-control" %>
+					</div>
+					<div class="form-group">
+							<label for="exampleInputFile">Upload Image</label>
+							 <%= f.file_field :avatar, id: "exampleInputFile" %>
+						</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<%= f.submit "Update", class: "btn btn-primary" %>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>		
+			<% end %>
+		</div>
+	</div>
+</div>

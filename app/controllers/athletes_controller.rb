@@ -5,6 +5,8 @@ class AthletesController < ApplicationController
   # GET /athletes.json
   def index
     @athletes = Athlete.all
+    @athlete = Athlete.new
+    # @sport = Sport.find(params[:sport_id])
   end
 
   # GET /athletes/1
@@ -17,19 +19,37 @@ class AthletesController < ApplicationController
     @athlete = Athlete.new
   end
 
+  def new_modal
+    @athlete = Athlete.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  # def edit_modal
+  #   respond_to do |format|
+  #     format.html
+  #     format.js
+  #   end
+  # end
+
   # GET /athletes/1/edit
   def edit
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   # POST /athletes
   # POST /athletes.json
   def create
     @athlete = Athlete.new(athlete_params)
-
     respond_to do |format|
       if @athlete.save
-        format.html { redirect_to @athlete, notice: 'Athlete was successfully created.' }
-        format.json { render :show, status: :created, location: @athlete }
+        format.html { redirect_to athletes_path }
+        format.json { render :index, status: :created, location: @athletes }
       else
         format.html { render :new }
         format.json { render json: @athlete.errors, status: :unprocessable_entity }
@@ -42,8 +62,8 @@ class AthletesController < ApplicationController
   def update
     respond_to do |format|
       if @athlete.update(athlete_params)
-        format.html { redirect_to @athlete, notice: 'Athlete was successfully updated.' }
-        format.json { render :show, status: :ok, location: @athlete }
+        format.html { redirect_to athletes_path}
+        format.json { render :index, status: :ok, location: @athletes }
       else
         format.html { render :edit }
         format.json { render json: @athlete.errors, status: :unprocessable_entity }
@@ -69,6 +89,6 @@ class AthletesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def athlete_params
-      params.require(:athlete).permit(:firstname, :lastname, :sport, :league, :team)
+      params.require(:athlete).permit(:firstname, :lastname, :sport_id, :league, :team, :avatar)
     end
 end

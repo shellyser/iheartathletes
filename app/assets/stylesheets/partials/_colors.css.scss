@@ -1,7 +1,16 @@
 //color variables
 $black: #000;
 $white: #fff;
+$thuzio_yellow: #fcd273;
+$thuzio_yellow_bright: #ffed6f;
+$grey_light: #f8f8f8;
+$grey_dark: #9d9d9d;
 
 //component colors
-$header_bgcolor: $black;
-$header_color: $white;
+$primary_color: $black;
+$primary_color2: $thuzio_yellow;
+$primary_color3: $white;
+
+$link_hover_color: $thuzio_yellow_bright;
+$header_color: $thuzio_yellow;
+$main_background_color: $grey_light;

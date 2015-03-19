@@ -1,39 +1,50 @@
-<div class="container">
+<div class="gallery">
 	<% @athletes.each do |athlete| %>
 		<section>
 			<div class="flipper">
 				<div class="content">
+					<div class="border"></div>
 					<div class="photo">
-						<img src="http://lorempixel.com/200/300/sports/">
+						<img src="<%=athlete.avatar %>">
 					</div>
 					<div class="info">
-						<h2><%= athlete.firstname %>
+						<h2><%= initial(athlete.firstname) %>.
 								<%= athlete.lastname %></h2>
-					<!-- 	<h3><%= athlete.sport %></h3>
-						<p><%= athlete.league %></p>
-						<p><%= athlete.team %></p>
-					<%= link_to 'Show', athlete %>
-					<%= link_to 'Edit', edit_athlete_path(athlete) %>
-					<%= link_to 'Destroy', athlete, method: :delete, data: { confirm: 'Are you sure?' } %> -->
 					</div>
 				</div>
-				<div class="content">
+				<div class="content sport-<%= athlete.sport_id%>">
+					<div class="overlay"></div>
 					<div class="info">
 						<h2><%= athlete.firstname %>
+							<br>
 								<%= athlete.lastname %></h2>
-						<h3><%= athlete.sport %></h3>
-						<p><%= athlete.league %></p>
+						<p><em><%= athlete.sport_id%></em> | <%= athlete.league %></p>
 						<p><%= athlete.team %></p>
 					</div>
+					<span>
+						<%= link_to edit_athlete_path(athlete),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '.modal-edit'} do %>
+						<i class="fa fa-pencil"></i><%end%><%= link_to athlete, method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa fa-trash-o"></i><%end%>
+					</span>
 				</div>
 			</div>
 		</section>
 	<% end %>
 	<section>
-		<%= link_to new_athlete_path do %>
-			<i></i>
-		<% end %>
-	</section>
+		<%= link_to new_modal_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'}  do%>
+		<i class="plus"></i>
+		<%end%>
+	</section> 
 </div>
 <br>
+
+<div id="modal-window" class="modal fade" tabindex="-2" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    
+  </div>
+</div>
+<div id="modal-window" class="modal fade modal-edit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog-edit modal-dialog modal-lg">
+    
+  </div>
+</div>
 

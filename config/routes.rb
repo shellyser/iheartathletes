@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  resources :athletes
+get 'athletes/new_modal' => 'athletes#new_modal', :as => :new_modal
+# get 'athletes/:id/edit_modal' => 'athletes#edit_modal', :as => :edit_modal
 
+  resources :athletes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

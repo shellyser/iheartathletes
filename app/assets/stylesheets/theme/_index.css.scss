@@ -1,96 +1,198 @@
-.container {
-    @include container;
+.gallery {
+	@include clearfix; 
+	padding: gutter(8);
+	padding-bottom: 0;
 }
-
 section {
-    @include span(6 last);
-    margin-bottom: 1rem;
-    @include susy-breakpoint($bp-large, $susy) {
-        @include gallery(2 of 6);
-        @include border-radius(4px);
-        height: 26rem;
-        @include perspective(1000);
-        &:hover .flipper, &.hover .flipper {
-            @include transform(rotateY(180deg));
-        }
-    }
-
-    .flipper {
-        @include susy-breakpoint($bp-large, $susy) {
-            @include transition(0.6s);
-            @include transform-style(preserve-3d);
-            position: relative;
-            height: 100%;
-            width: 100%;
-        }
-    }
-}
-
-.content {
-    @include susy-breakpoint($bp-large, $susy) {
-        backface-visibility: hidden;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    &:first-of-type {
-        @include susy-breakpoint($bp-large, $susy) {
-            z-index: 2;
-            @include transform(rotateY(0deg));
-        }
-
-        .info {
-            @include span(6 last);
-            @include susy-breakpoint($bp-large, $susy) {
-                width: 100%;
-                position: absolute;
-                bottom: 0px;
-                z-index: 9999;
-                h2 {
-                    font-family: $decor-font;
-                    text-align: center;
-                    text-transform: capitalize;
-                }
-            }
-        }
-    }
-    .photo {
-        @include span(3 first);
-        @include susy-breakpoint($bp-large, $susy) {
-            padding: 1rem;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-    }
-    &:last-of-type {
-        @include susy-breakpoint($bp-large, $susy) {
-            @include transform(rotateY(180deg));
-            width: 100%;
-            height: 100%;
-            text-align: center;
-        }
-        .info {
-            @include span(6 last);
-            @include susy-breakpoint($bp-large, $susy) {
-                width: 100%;
-                h2 {
-                    font-family: $decor-font;
-                    text-align: center;
-                    text-transform: capitalize;
-                }
-            }
-        }
-    }
-}
-section{
-	&:last-of-type{
-		background: rgba(0, 0, 0, 0.03);
+	@include span(6 last);
+	height: 10rem;
+	margin-bottom: 1rem;
+	@include susy-breakpoint($bp-large, $susy) {
+		@include gallery(2 of 6);
+		margin-bottom: gutter(6); 
+		@include border-radius(4px);
+		@include box-shadow(inset 0 0 10px $grey_dark);
+		height: 26rem;
+		@include perspective(1000);
+		&:hover .flipper, &.hover .flipper {
+			@include transform(rotateY(180deg));
+	       }
 	}
-	 & i{
+	.flipper {
+		@include susy-breakpoint($bp-large, $susy) {
+			@include transition(0.6s);
+			@include transform-style(preserve-3d);
+			position: relative;
+			height: 100%;
+			width: 100%;
+		}
+	}
+	&:last-of-type{
+		background: rgba(0, 0, 0, 0.02);
+		border: 4px solid rgba(0,0,0,.05);
+	}
+	& i.plus{
 		@extend .add;
 	}
+	 .content {
+		@include susy-breakpoint($bp-large, $susy) {
+			@include border-radius(4px);
+			backface-visibility: hidden;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: 1px solid rgba(0,0,0,.3);
+			background-color: $white;
+		}
+
+		&:first-of-type {
+			@include susy-breakpoint($bp-large, $susy) {
+				z-index: 2;
+				@include transform(rotateY(0deg));
+			}
+			.info {
+				display: none;
+				@include susy-breakpoint($bp-large, $susy) {
+					display: block;
+				        width: 100%;
+				        position: absolute;
+				        bottom: 0px;
+				        z-index: 9999;
+				        h2 {
+						font-family: $main-font;
+						text-align: center;
+						color: $header_color;
+						font-size: 2em;
+						font-weight: 400;
+				        }
+				 }
+			}
+		}
+		.border{
+			display: none;
+			@include susy-breakpoint($bp-large, $susy){
+				display: block;
+				width: 100%;
+				height: 100%;
+				border: 15px solid $primary_color;
+				border-bottom: 44px solid $primary_color;
+				position: absolute;
+				z-index: 999;
+			}
+			
+		}
+		.photo {
+			@include span(2 first);
+			@include susy-breakpoint($bp-large, $susy) {
+				padding: 1rem;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+		}
+		&:last-of-type {
+			@include susy-breakpoint($bp-large, $susy) {
+				@include transform(rotateY(180deg));
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				background-color: $primary_color3;
+			}
+			.info {
+				@include span(3 of 6);
+				@include susy-breakpoint($bp-large, $susy) {
+				        width: 100%;
+				        margin-top: 6rem;
+					h2 {
+						font-family: $main-font;
+						font-weight: 300;
+						text-align: center;
+						font-size: 2.5rem;
+						color: $primary_color2;
+					}
+					p{
+						color: $white;
+						font-size: 1.5rem;
+						font-weight: 300;
+						font-size: 1.25rem;
+						text-transform: uppercase;
+						em{
+							font-style: normal;
+							font-weight: 800;
+						 }
+						&:last-of-type{
+							line-height: 0.75rem;
+							text-transform: capitalize;
+						}
+					}
+				}
+			}
+		}
+		.overlay{
+			@include susy-breakpoint($bp-large, $susy) {
+				width: 90%;
+				position: absolute;
+				height: 90%;
+				margin: auto;
+				background-color: $black;
+				@include opacity(.4);
+				top: 0;
+				bottom: 0;
+				left: 0;
+				z-index: -5;
+				right: 0;
+			}
+		}
+	}
+	span{	
+		@include span(1 last);
+		@include susy-breakpoint($bp-large, $susy) {
+			width: 20%;
+			display: inline-block;
+			position: absolute;
+			bottom: 1.75rem;
+			right: 1.5rem;
+		}
+		a, a:visited{
+			color: white;
+		}
+		i {
+			padding-left: .5rem;
+			@include opacity(.8);
+			font-size: 1.25rem;
+			&.fa{
+				font-size: 1.25rem;
+			}
+			&.fa-pencil:hover{
+				@include opacity(1);
+				@include transition(.5s);
+				color: $link_hover_color;
+			}
+			&.fa-trash-o:hover{
+				@include opacity(1);
+				@include transition(.5s);
+				color: $link_hover_color;
+			}
+
+		}
+	}
+}
+
+div[class^='sport'], div[class*=' sport']{
+	@include background-size(cover);
+	background-position: 50% 50%	;
+}
+.sport-1{
+	background-image: asset-data-url("baseball.jpg")
+}
+.sport-2{
+	background-image: asset-data-url("basketball.jpg")
+}
+.sport-3{
+	background-image: asset-data-url("soccer.jpg")
+}
+.sport-4{
+	background-image: asset-data-url("tennis.jpg")
 }

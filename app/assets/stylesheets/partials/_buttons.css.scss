@@ -27,3 +27,14 @@
 		text-align: center;
 	}
 }
+
+.btn-primary{
+	background-color: $thuzio_yellow;
+	border-color: rgba(0,0,0,.1);
+	color: $black;
+	&:hover{
+		background-color: $link_hover_color;
+		border-color: rgba(0,0,0,.1);
+		color: $black;
+	}
+}
