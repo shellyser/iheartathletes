@@ -6,7 +6,6 @@ class AthletesController < ApplicationController
   def index
     @athletes = Athlete.all
     @athlete = Athlete.new
-    # @sport = Sport.find(params[:sport_id])
   end
 
   # GET /athletes/1
@@ -27,19 +26,8 @@ class AthletesController < ApplicationController
     end
   end
 
-  # def edit_modal
-  #   respond_to do |format|
-  #     format.html
-  #     format.js
-  #   end
-  # end
-
   # GET /athletes/1/edit
   def edit
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    # end
   end
 
   # POST /athletes
@@ -89,6 +77,6 @@ class AthletesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def athlete_params
-      params.require(:athlete).permit(:firstname, :lastname, :sport_id, :league, :team, :avatar)
+      params.require(:athlete).permit(:firstname, :lastname, :sport, :league, :team, :avatar)
     end
 end
