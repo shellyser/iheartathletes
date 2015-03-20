@@ -1,137 +1,190 @@
 .gallery {
 	@include clearfix; 
-	padding: gutter(8);
-	padding-bottom: 0;
+	padding: 0px;
+	padding-top: 5rem;
+	@include susy-breakpoint($bp-medium, $susy){
+		padding: gutter(8);
+		padding-bottom: 0;
+		padding-top: 7rem;
+	}
 }
 section {
 	@include span(6 last);
-	height: 10rem;
-	margin-bottom: 1rem;
-	@include susy-breakpoint($bp-large, $susy) {
+	position: relative;
+	@include clearfix;
+	height: 12.5rem;
+	margin-bottom: 0rem;
+	@include susy-breakpoint($bp-section-height-sm, $susy){
+		 height: 13rem;
+	}
+	@include susy-breakpoint($bp-medium, $susy) {
 		@include gallery(2 of 6);
 		margin-bottom: gutter(6); 
 		@include border-radius(4px);
 		@include box-shadow(inset 0 0 10px $grey_dark);
-		height: 26rem;
+		height: 21rem;
 		@include perspective(1000);
 		&:hover .flipper, &.hover .flipper {
 			@include transform(rotateY(180deg));
 	       }
 	}
 	.flipper {
-		@include susy-breakpoint($bp-large, $susy) {
+		background-color: rgba(0,0,0,0.2);
+		width: 100%;
+		height: 100%;
+		@include susy-breakpoint($bp-medium, $susy) {
 			@include transition(0.6s);
 			@include transform-style(preserve-3d);
 			position: relative;
-			height: 100%;
-			width: 100%;
+			background-color: transparent;
 		}
+	}
+	@include susy-breakpoint($bp-section-height-lg, $susy){
+		height: 26rem;
 	}
 	&:last-of-type{
 		background: rgba(0, 0, 0, 0.02);
-		border: 4px solid rgba(0,0,0,.05);
 	}
 	& i.plus{
 		@extend .add;
+	}	
+	span{	
+		display: inline-block;
+		position: absolute;
+		bottom: .5rem;
+		right: .5rem;
+		a, a:visited{
+			color: white;
+		}
+		i {
+			padding-left: .5rem;
+			@include opacity(.8);
+			font-size: 1.25rem;
+			&.fa{
+				font-size: 1.5rem;
+			}
+			&.fa-pencil:hover{
+				@include opacity(1);
+				@include transition(.5s);
+				color: $link_hover_color;
+			}
+			&.fa-trash-o:hover{
+				@include opacity(1);
+				@include transition(.5s);
+				color: $link_hover_color;
+			}
+		}
+		@include susy-breakpoint($bp-medium, $susy){
+			bottom: 1.75rem;
+			right: 1.5rem;
+		}
 	}
-	 .content {
-		@include susy-breakpoint($bp-large, $susy) {
-			@include border-radius(4px);
-			backface-visibility: hidden;
-			position: absolute;
-			top: 0;
-			left: 0;
+}
+
+ .content {
+	@include susy-breakpoint($bp-medium, $susy) {
+		@include border-radius(4px);
+		backface-visibility: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 1px solid rgba(0,0,0,.3);
+		background-color: $white;
+	}
+	&:first-of-type {
+		@include span(2 first);
+		@include susy-breakpoint($bp-medium, $susy) {
+			width: 100%;
+			z-index: 2;
+			@include transform(rotateY(0deg));
+		}
+		.info {
+			display: none;
+			@include susy-breakpoint($bp-medium, $susy) {
+				display: block;
+			        width: 100%;
+			        position: absolute;
+			        bottom: 0px;
+			        z-index: 9999;
+			        h2 {
+					font-family: $serif-font;
+					text-align: center;
+					color: $header_color;
+					font-size: 2rem;
+					font-weight: 400;
+			        }
+			 }
+		}
+	}
+	.border{
+		display: none;
+		@include susy-breakpoint($bp-medium, $susy){
+			display: block;
 			width: 100%;
 			height: 100%;
-			border: 1px solid rgba(0,0,0,.3);
-			background-color: $white;
+			border: 1rem solid $primary_color;
+			border-bottom: 3.5rem solid $primary_color;
+			position: absolute;
+			z-index: 999;
 		}
-
-		&:first-of-type {
-			@include susy-breakpoint($bp-large, $susy) {
-				z-index: 2;
-				@include transform(rotateY(0deg));
+		
+	}
+	.photo {
+		@include susy-breakpoint($bp-medium, $susy) {
+			padding: 1rem;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+		}
+	}
+}
+.content{
+	&:last-of-type {
+		@include span(4 last);
+		text-align: left;
+		.info{
+			margin-left: 1rem;
+			margin-top: 0rem;
+			h2 {
+				font-family: $serif-font;
+				font-weight: 300;
+				font-size: 2.5rem;
+				line-height: 2.75rem;
+				color: $primary_color2;
 			}
-			.info {
-				display: none;
-				@include susy-breakpoint($bp-large, $susy) {
-					display: block;
-				        width: 100%;
-				        position: absolute;
-				        bottom: 0px;
-				        z-index: 9999;
-				        h2 {
-						font-family: $main-font;
-						text-align: center;
-						color: $header_color;
-						font-size: 2em;
-						font-weight: 400;
-				        }
+			p{
+				color: $white;
+				line-height: 1.25rem;
+				font-weight: 300;
+				font-size: 1.25rem;
+				text-transform: uppercase;
+				em{
+					font-style: normal;
+					font-weight: 800;
+					letter-spacing: .03rem;
 				 }
-			}
-		}
-		.border{
-			display: none;
-			@include susy-breakpoint($bp-large, $susy){
-				display: block;
-				width: 100%;
-				height: 100%;
-				border: 15px solid $primary_color;
-				border-bottom: 44px solid $primary_color;
-				position: absolute;
-				z-index: 999;
-			}
-			
-		}
-		.photo {
-			@include span(2 first);
-			@include susy-breakpoint($bp-large, $susy) {
-				padding: 1rem;
-				width: 100%;
-				height: 100%;
-				overflow: hidden;
-			}
-		}
-		&:last-of-type {
-			@include susy-breakpoint($bp-large, $susy) {
-				@include transform(rotateY(180deg));
-				width: 100%;
-				height: 100%;
-				text-align: center;
-				background-color: $primary_color3;
-			}
-			.info {
-				@include span(3 of 6);
-				@include susy-breakpoint($bp-large, $susy) {
-				        width: 100%;
-				        margin-top: 6rem;
-					h2 {
-						font-family: $main-font;
-						font-weight: 300;
-						text-align: center;
-						font-size: 2.5rem;
-						color: $primary_color2;
-					}
-					p{
-						color: $white;
-						font-size: 1.5rem;
-						font-weight: 300;
-						font-size: 1.25rem;
-						text-transform: uppercase;
-						em{
-							font-style: normal;
-							font-weight: 800;
-						 }
-						&:last-of-type{
-							line-height: 0.75rem;
-							text-transform: capitalize;
-						}
-					}
+				&:last-of-type{
+					line-height: 0.75rem;
+					text-transform: capitalize;
 				}
 			}
 		}
+		@include susy-breakpoint($bp-medium, $susy) {
+			text-align: center;
+			background-color: $primary_color3;
+			@include transform(rotateY(180deg));
+			width: 100%;
+			height: 100%;
+			.info {
+			        width: 100%;
+			        margin-top: 6rem;
+			        margin-left: 0rem;
+			 }	
+		}
 		.overlay{
-			@include susy-breakpoint($bp-large, $susy) {
+			@include susy-breakpoint($bp-medium, $susy) {
 				width: 90%;
 				position: absolute;
 				height: 90%;
@@ -146,53 +199,21 @@ section {
 			}
 		}
 	}
-	span{	
-		@include span(1 last);
-		@include susy-breakpoint($bp-large, $susy) {
-			width: 20%;
-			display: inline-block;
-			position: absolute;
-			bottom: 1.75rem;
-			right: 1.5rem;
-		}
-		a, a:visited{
-			color: white;
-		}
-		i {
-			padding-left: .5rem;
-			@include opacity(.8);
-			font-size: 1.25rem;
-			&.fa{
-				font-size: 1.25rem;
-			}
-			&.fa-pencil:hover{
-				@include opacity(1);
-				@include transition(.5s);
-				color: $link_hover_color;
-			}
-			&.fa-trash-o:hover{
-				@include opacity(1);
-				@include transition(.5s);
-				color: $link_hover_color;
-			}
-
-		}
-	}
 }
-
-div[class^='sport'], div[class*=' sport']{
-	@include background-size(cover);
-	background-position: 50% 50%	;
+	
+.Soccer{
+	background-image: asset-data-url("soccer.jpg");
+	@extend .background-image;
 }
-.sport-1{
-	background-image: asset-data-url("baseball.jpg")
+.Basketball{
+	background-image: asset-data-url("basketball.jpg");
+	@extend .background-image;
 }
-.sport-2{
-	background-image: asset-data-url("basketball.jpg")
+.Tennis{
+	background-image: asset-data-url("tennis.jpg");
+	@extend .background-image;
 }
-.sport-3{
-	background-image: asset-data-url("soccer.jpg")
-}
-.sport-4{
-	background-image: asset-data-url("tennis.jpg")
+.Baseball{
+	background-image: asset-data-url("baseball.jpg");
+	@extend .background-image;
 }

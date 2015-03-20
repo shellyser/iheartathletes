@@ -17,3 +17,28 @@
 //= require turbolinks
 //= require_tree .
 
+
+function checkWidth(){
+  if ($(window).width() < 670) {
+    $('section').each(function(){
+      var sport = $(this).find('em').html();
+      $(this).addClass(sport);
+      $(this).find('.content:last-of-type').removeClass(sport);
+    })
+  }
+  else {
+      $('section').each(function(){
+        var sport = $(this).find('em').html();
+        $(this).find('.content:last-of-type').addClass(sport);
+        $(this).removeClass(sport);
+      })
+    }
+}
+
+$(document).ready(function() {
+    checkWidth();
+ });
+
+  $(window).resize(function() {
+      checkWidth(); 
+});

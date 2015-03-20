@@ -12,13 +12,17 @@
 								<%= athlete.lastname %></h2>
 					</div>
 				</div>
-				<div class="content sport-<%= athlete.sport_id%>">
+				<div class="content">
 					<div class="overlay"></div>
 					<div class="info">
 						<h2><%= athlete.firstname %>
 							<br>
 								<%= athlete.lastname %></h2>
-						<p><em><%= athlete.sport_id%></em> | <%= athlete.league %></p>
+						<p><em><% if athlete.sport_id == 1 %>Soccer<%end%>
+										<% if athlete.sport_id == 2 %>Basketball<%end%>
+										<% if athlete.sport_id == 3 %>Tennis<%end%>
+										<% if athlete.sport_id == 4 %>Baseball<%end%>
+							</em> | <%= athlete.league %></p>
 						<p><%= athlete.team %></p>
 					</div>
 					<span>
