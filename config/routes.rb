@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-get 'athletes/new_modal' => 'athletes#new_modal', :as => :new_modal
+  get 'athletes/new_modal' => 'athletes#new_modal', :as => :new_modal
 # get 'athletes/:id/edit_modal' => 'athletes#edit_modal', :as => :edit_modal
 
   resources :athletes
@@ -7,7 +7,7 @@ get 'athletes/new_modal' => 'athletes#new_modal', :as => :new_modal
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'athletes#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
