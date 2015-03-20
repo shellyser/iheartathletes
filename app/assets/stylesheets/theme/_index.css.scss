@@ -16,6 +16,7 @@ section {
 	margin-bottom: 0rem;
 	@include susy-breakpoint($bp-section-height-sm, $susy){
 		 height: 13rem;
+		 @include box-shadow(5px 6px 12px -5px rgba(84,84,84,0.53))
 	}
 	@include susy-breakpoint($bp-medium, $susy) {
 		@include gallery(2 of 6);
@@ -53,7 +54,7 @@ section {
 		position: absolute;
 		bottom: .5rem;
 		right: .5rem;
-		a, a:visited{
+		a, a:visited, a:focus, a:active{
 			color: white;
 		}
 		i {

@@ -25,9 +25,9 @@ header{
 	margin-bottom: 2rem;
 	height: 5rem;
 	width: 100%;
-	@include box-shadow(0 0 9px #9d9d9d);
+	@include box-shadow(0px 6px 12px -1px rgba(84,84,84,0.53));
 	position: fixed;
-	z-index: 9999;
+	z-index: 10;
 }
 
 h1{
